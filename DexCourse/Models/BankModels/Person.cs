@@ -3,10 +3,10 @@
 public class Person
 {
     public string Name { get; private set; }
-    public DateTime BirthDate { get; private init; }
+    public DateOnly BirthDate { get; private init; }
     public string PhoneNumber { get; private set; }
 
-    protected Person(string name, DateTime birthDate, string phoneNumber)
+    protected Person(string name, DateOnly birthDate, string phoneNumber)
     {
         Name = name;
         BirthDate = birthDate;

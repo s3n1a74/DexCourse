@@ -5,7 +5,7 @@ public class Employee : Person
     public string Position { get; private set; }
     public string? Contract { get; private set; }
 
-    public Employee(string name, DateTime birthDate, string phoneNumber, string position)
+    public Employee(string name, DateOnly birthDate, string phoneNumber, string position)
         : base(name, birthDate, phoneNumber)
     {
         Position = position;
