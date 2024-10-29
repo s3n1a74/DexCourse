@@ -13,6 +13,9 @@ static class Program
         SecondChapterExecutor.Execute();
 
         // Глава 3: Упаковка и распаковка
-        ThirdChapterExecute.Execute();
+        ThirdChapterExecutor.Execute();
+
+        // Глава 5: События 
+        FifthChapterExecutor.Execute();
     }
 }

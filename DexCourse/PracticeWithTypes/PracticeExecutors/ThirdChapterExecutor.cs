@@ -2,7 +2,7 @@
 
 namespace PracticeWithTypes.PracticeExecutors;
 
-public static class ThirdChapterExecute
+public static class ThirdChapterExecutor
 {
     public static void Execute()
     {
