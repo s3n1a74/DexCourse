@@ -25,8 +25,8 @@ public class BankService
     //2 - прибыль и затраты банка - значения типа decimal, как и возвращаемое значение(зарплату можно округлить до
     //сотых).
 
-    public static Employee ClientToEmployee(Client client, string position)
+    public static Employee ClientToEmployee(Client client, string position, int salary)
     {
-        return new Employee(client.Name, client.BirthDate, client.PhoneNumber, position);
+        return new Employee(client.Name, client.BirthDate, client.PhoneNumber, position, salary);
     }
 }

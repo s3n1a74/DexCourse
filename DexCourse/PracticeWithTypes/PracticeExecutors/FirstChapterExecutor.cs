@@ -6,7 +6,7 @@ public static class FirstChapterExecutor
 {
     public static void Execute()
     {
-        var employee = new Employee("Danik", new DateOnly(1998, 8, 2), "77712345", "slesar4r");
+        var employee = new Employee("Danik", new DateOnly(1998, 8, 2), "77712345", "slesar4r", 1000);
         var modifiedEmployee = ModifyEmployee(employee, "Danik starts working on VDGO");
         Console.WriteLine(modifiedEmployee == employee);
         //Так как ссылка не менялась после изменения объекта, сравнение 2х переменных, в которых хранятся ссылки

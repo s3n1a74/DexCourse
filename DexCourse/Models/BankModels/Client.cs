@@ -6,4 +6,23 @@ public class Client : Person
         : base(name, birthDate, phoneNumber)
     {
     }
+
+    public override bool Equals(object? obj)
+    {
+        if (obj == null)
+        {
+            return false;
+        }
+        else if (obj is Client c)
+        {
+            return c.Name == Name && c.BirthDate == BirthDate && c.PhoneNumber == PhoneNumber;
+        }
+
+        return false;
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(Name, BirthDate, PhoneNumber);
+    }
 }
