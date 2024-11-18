@@ -20,5 +20,8 @@ static class Program
 
         // Глава 6: List, Dictionary
         SixthChapterExecutor.Execute();
+        
+        // Глава 8: IComparable<T>, CompareTo
+        EighthChapterExecutor.Execute();
     }
 }
