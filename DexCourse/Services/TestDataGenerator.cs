@@ -51,4 +51,93 @@ public static class TestDataGenerator
 
         return employees;
     }
+
+    public static Dictionary<Client, Account> GenerateDictionaryOfClientsWithSingleAccount(int countOfAccounts)
+    {
+        var clients = new Dictionary<Client, Account>();
+        var faker = new Faker("ru");
+
+        for (var i = 0; i < countOfAccounts; i++)
+        {
+            var birthDate = DateOnly.FromDateTime(faker.Date.Between(new DateTime(1960, 10, 6),
+                new DateTime(2000, 10, 6)));
+            var client = new Client(faker.Name.FullName(), birthDate, faker.Phone.PhoneNumber());
+            var currencyFake = faker.Finance.Currency();
+            var currency = new Currency(faker.Address.Country(), currencyFake.Description,
+                faker.Random.Double(0.01, 1000));
+            var account = new Account(currency, faker.Random.Double(0, 10000));
+            clients.Add(client, account);
+        }
+
+        return clients;
+    }
+
+    public static Dictionary<Client, List<Account>> GenerateDictionaryOfClientsWithSomeAccounts(int countOfAccounts)
+    {
+        var clients = new Dictionary<Client, List<Account>>();
+        var faker = new Faker("ru");
+        for (var i = 0; i < countOfAccounts; i++)
+        {
+            var birthDate = DateOnly.FromDateTime(faker.Date.Between(new DateTime(1960, 10, 6),
+                new DateTime(2000, 10, 6)));
+            var client = new Client(faker.Name.FullName(), birthDate, faker.Phone.PhoneNumber());
+            var currencyFake = faker.Finance.Currency();
+            var currency = new Currency(faker.Address.Country(), currencyFake.Description,
+                faker.Random.Double(0.01, 1000));
+            var accounts = new List<Account>
+            {
+                new Account(currency, faker.Random.Double(0, 10000)),
+                new Account(currency, faker.Random.Double(0, 10000))
+            };
+
+            clients.Add(client, accounts);
+        }
+
+        return clients;
+    }
+
+    public static Dictionary<Employee, Account> GenerateDictionaryOfEmployeesWithSingleAccount(int countOfAccounts)
+    {
+        var employees = new Dictionary<Employee, Account>();
+        var faker = new Faker("ru");
+        for (int i = 0; i < countOfAccounts; i++)
+        {
+            var birthDate = DateOnly.FromDateTime(faker.Date.Between(new DateTime(1960, 10, 6),
+                new DateTime(2000, 10, 6)));
+            var employee = new Employee(faker.Name.FullName(), birthDate, faker.Phone.PhoneNumber(),
+                faker.Name.JobTitle(), faker.Random.Number(10000, 25000));
+            var currencyFake = faker.Finance.Currency();
+            var currency = new Currency(faker.Address.Country(), currencyFake.Description,
+                faker.Random.Double(0.01, 1000));
+            var account = new Account(currency, faker.Random.Double(0, 10000));
+            employees.Add(employee, account);
+        }
+
+        return employees;
+    }
+
+    public static Dictionary<Employee, List<Account>> GenerateDictionaryOfEmployeesWithSomeAccounts(int countOfAccounts)
+    {
+        var employees = new Dictionary<Employee, List<Account>>();
+        var faker = new Faker("ru");
+        for (var i = 0; i < countOfAccounts; i++)
+        {
+            var birthDate = DateOnly.FromDateTime(faker.Date.Between(new DateTime(1960, 10, 6),
+                new DateTime(2000, 10, 6)));
+            var employee = new Employee(faker.Name.FullName(), birthDate, faker.Phone.PhoneNumber(),
+                faker.Name.JobTitle(), faker.Random.Number(10000, 25000));
+            var currencyFake = faker.Finance.Currency();
+            var currency = new Currency(faker.Address.Country(), currencyFake.Description,
+                faker.Random.Double(0.01, 1000));
+            var accounts = new List<Account>
+            {
+                new Account(currency, faker.Random.Double(0, 10000)),
+                new Account(currency, faker.Random.Double(0, 10000))
+            };
+
+            employees.Add(employee, accounts);
+        }
+
+        return employees;
+    }
 }

@@ -22,4 +22,24 @@ public class Employee : Person
     {
         Contract = contract;
     }
+
+    public override bool Equals(object? obj)
+    {
+        if (obj == null)
+        {
+            return false;
+        }
+        else if (obj is Employee employee)
+        {
+            return employee.Name == Name && employee.Position == Position && employee.Contract == Contract 
+                   && employee.Salary == Salary && employee.PhoneNumber == PhoneNumber 
+                   && employee.BirthDate == BirthDate ;
+        }
+        return false;
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(Name, Position, Contract, Salary, PhoneNumber);
+    }
 }
