@@ -6,8 +6,9 @@ public class Employee : Person
     public string? Contract { get; private set; }
     public int Salary { get; private set; }
 
-    public Employee(string name, DateOnly birthDate, string phoneNumber, string position, int salary)
-        : base(name, birthDate, phoneNumber)
+    public Employee(string name, DateOnly birthDate, string phoneNumber, string position, int salary, 
+        bool hasPassportData)
+        : base(name, birthDate, phoneNumber, hasPassportData)
     {
         Position = position;
         Salary = salary;
@@ -33,13 +34,13 @@ public class Employee : Person
         {
             return employee.Name == Name && employee.Position == Position && employee.Contract == Contract 
                    && employee.Salary == Salary && employee.PhoneNumber == PhoneNumber 
-                   && employee.BirthDate == BirthDate ;
+                   && employee.BirthDate == BirthDate && employee.HasPassportData == HasPassportData; ;
         }
         return false;
     }
 
     public override int GetHashCode()
     {
-        return HashCode.Combine(Name, Position, Contract, Salary, PhoneNumber);
+        return HashCode.Combine(Name, Position, Contract, Salary, PhoneNumber, HasPassportData);
     }
 }

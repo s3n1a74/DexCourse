@@ -27,6 +27,6 @@ public class BankService
 
     public static Employee ClientToEmployee(Client client, string position, int salary)
     {
-        return new Employee(client.Name, client.BirthDate, client.PhoneNumber, position, salary);
+        return new Employee(client.Name, client.BirthDate, client.PhoneNumber, position, salary, client.HasPassportData);
     }
 }

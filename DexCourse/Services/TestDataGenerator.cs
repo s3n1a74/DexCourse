@@ -13,7 +13,8 @@ public static class TestDataGenerator
         {
             var birthDate = DateOnly.FromDateTime(faker.Date.Between(new DateTime(1960, 10, 6),
                 new DateTime(2000, 10, 6)));
-            var client = new Client(faker.Name.FullName(), birthDate, faker.Phone.PhoneNumber());
+            var client = new Client(faker.Name.FullName(), birthDate, faker.Phone.PhoneNumber(), 
+                faker.Random.Bool());
             clients.Add(client);
         }
 
@@ -29,7 +30,8 @@ public static class TestDataGenerator
             var birthDate = DateOnly.FromDateTime(faker.Date.Between(new DateTime(1960, 10, 6),
                 new DateTime(2000, 10, 6)));
             var employee = new Employee(faker.Person.FirstName, birthDate,
-                faker.Phone.PhoneNumber(), faker.Commerce.Department(), faker.Random.Number(10000, 25000));
+                faker.Phone.PhoneNumber(), faker.Commerce.Department(), faker.Random.Number(10000, 25000),
+                faker.Random.Bool());
             employees.Add(employee.PhoneNumber, employee);
         }
 
@@ -45,7 +47,8 @@ public static class TestDataGenerator
             var birthDate = DateOnly.FromDateTime(faker.Date.Between(new DateTime(1960, 10, 6),
                 new DateTime(2000, 10, 6)));
             var employee = new Employee(faker.Person.FirstName, birthDate,
-                faker.Phone.PhoneNumber(), faker.Commerce.Department(), faker.Random.Number(10000, 25000));
+                faker.Phone.PhoneNumber(), faker.Commerce.Department(), faker.Random.Number(10000, 25000),
+                faker.Random.Bool());
             employees.Add(employee);
         }
 
@@ -61,7 +64,8 @@ public static class TestDataGenerator
         {
             var birthDate = DateOnly.FromDateTime(faker.Date.Between(new DateTime(1960, 10, 6),
                 new DateTime(2000, 10, 6)));
-            var client = new Client(faker.Name.FullName(), birthDate, faker.Phone.PhoneNumber());
+            var client = new Client(faker.Name.FullName(), birthDate, faker.Phone.PhoneNumber(), 
+                faker.Random.Bool());
             var currencyFake = faker.Finance.Currency();
             var currency = new Currency(faker.Address.Country(), currencyFake.Description,
                 faker.Random.Double(0.01, 1000));
@@ -80,7 +84,8 @@ public static class TestDataGenerator
         {
             var birthDate = DateOnly.FromDateTime(faker.Date.Between(new DateTime(1960, 10, 6),
                 new DateTime(2000, 10, 6)));
-            var client = new Client(faker.Name.FullName(), birthDate, faker.Phone.PhoneNumber());
+            var client = new Client(faker.Name.FullName(), birthDate, faker.Phone.PhoneNumber(), 
+                faker.Random.Bool());
             var currencyFake = faker.Finance.Currency();
             var currency = new Currency(faker.Address.Country(), currencyFake.Description,
                 faker.Random.Double(0.01, 1000));
@@ -105,7 +110,7 @@ public static class TestDataGenerator
             var birthDate = DateOnly.FromDateTime(faker.Date.Between(new DateTime(1960, 10, 6),
                 new DateTime(2000, 10, 6)));
             var employee = new Employee(faker.Name.FullName(), birthDate, faker.Phone.PhoneNumber(),
-                faker.Name.JobTitle(), faker.Random.Number(10000, 25000));
+                faker.Name.JobTitle(), faker.Random.Number(10000, 25000), faker.Random.Bool());
             var currencyFake = faker.Finance.Currency();
             var currency = new Currency(faker.Address.Country(), currencyFake.Description,
                 faker.Random.Double(0.01, 1000));
@@ -125,7 +130,7 @@ public static class TestDataGenerator
             var birthDate = DateOnly.FromDateTime(faker.Date.Between(new DateTime(1960, 10, 6),
                 new DateTime(2000, 10, 6)));
             var employee = new Employee(faker.Name.FullName(), birthDate, faker.Phone.PhoneNumber(),
-                faker.Name.JobTitle(), faker.Random.Number(10000, 25000));
+                faker.Name.JobTitle(), faker.Random.Number(10000, 25000), faker.Random.Bool());
             var currencyFake = faker.Finance.Currency();
             var currency = new Currency(faker.Address.Country(), currencyFake.Description,
                 faker.Random.Double(0.01, 1000));
@@ -139,5 +144,12 @@ public static class TestDataGenerator
         }
 
         return employees;
+    }
+    
+    public static Account CreateAccount()
+    {
+        var faker = new Faker("ru");
+        var currency = new Currency(faker.Address.Country(), "Dollar", faker.Random.Double(0.1, 3));
+        return new Account(currency, faker.Random.Double(1, 100000));
     }
 }

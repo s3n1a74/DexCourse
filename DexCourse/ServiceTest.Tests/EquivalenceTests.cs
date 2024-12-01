@@ -10,7 +10,7 @@ public class EquivalenceTests
     {
         var clients = TestDataGenerator.GenerateDictionaryOfClientsWithSingleAccount(100);
         var client = clients.ElementAt(56).Key;
-        var testClient = new Client(client.Name, client.BirthDate, client.PhoneNumber);
+        var testClient = new Client(client.Name, client.BirthDate, client.PhoneNumber, client.HasPassportData);
 
         Assert.True(clients.TryGetValue(testClient, out _));
     }
@@ -20,7 +20,7 @@ public class EquivalenceTests
     {
         var clients = TestDataGenerator.GenerateDictionaryOfClientsWithSomeAccounts(100);
         var client = clients.ElementAt(56).Key;
-        var testClient = new Client(client.Name, client.BirthDate, client.PhoneNumber);
+        var testClient = new Client(client.Name, client.BirthDate, client.PhoneNumber, client.HasPassportData);
 
         Assert.True(clients.TryGetValue(testClient, out _));
     }
@@ -31,7 +31,7 @@ public class EquivalenceTests
         var employees = TestDataGenerator.GenerateDictionaryOfEmployeesWithSingleAccount(100);
         var employee = employees.ElementAt(56).Key;
         var testEmployee = new Employee(employee.Name, employee.BirthDate, employee.PhoneNumber,
-            employee.Position, employee.Salary);
+            employee.Position, employee.Salary, employee.HasPassportData);
 
         Assert.True(employees.TryGetValue(testEmployee, out _));
     }
@@ -42,7 +42,7 @@ public class EquivalenceTests
         var employees = TestDataGenerator.GenerateDictionaryOfEmployeesWithSomeAccounts(100);
         var employee = employees.ElementAt(56).Key;
         var testClient = new Employee(employee.Name, employee.BirthDate, employee.PhoneNumber,
-            employee.Position, employee.Salary);
+            employee.Position, employee.Salary, employee.HasPassportData);
 
         Assert.True(employees.TryGetValue(testClient, out _));
     }
