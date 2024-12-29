@@ -1,14 +1,14 @@
 ﻿using Models.BankModels;
 using Services.Exceptions;
 
-namespace Services;
+namespace Services.Services.Employee;
 
-public class EmployeeService
+public class EmployeeService : IEmployeeService
 {
     private readonly DateOnly _ageValidationDate = DateOnly.FromDateTime(DateTime.Today.AddYears(-18));
-    public Dictionary<Employee, List<Account>> Employees { get; } = new();
+    public Dictionary<Models.BankModels.Employee, List<Account>> Employees { get; } = new();
 
-    public void AddEmployee(Employee employee)
+    public void AddEmployee(Models.BankModels.Employee employee)
     {
         if (Employees.ContainsKey(employee))
         {
@@ -27,7 +27,7 @@ public class EmployeeService
         }
     }
 
-    public void AddAccount(Employee employee, Account account)
+    public void AddAccount(Models.BankModels.Employee employee, Account account)
     {
         if (!Employees.TryGetValue(employee, out _))
         {
@@ -45,7 +45,7 @@ public class EmployeeService
         }
     }
 
-    public void UpdateAccount(Employee employee, Account account, Account newAccount)
+    public void UpdateAccount(Models.BankModels.Employee employee, Account account, Account newAccount)
     {
         if (!Employees.ContainsKey(employee))
         {
@@ -66,7 +66,7 @@ public class EmployeeService
         }
     }
 
-    private void ValidateEmployee(Employee employee)
+    private void ValidateEmployee(Models.BankModels.Employee employee)
     {
         var validationErrorsMessages = new List<string>();
         if (!employee.HasPassportData)

@@ -1,14 +1,14 @@
 ﻿using Models.BankModels;
 using Services.Exceptions;
 
-namespace Services;
+namespace Services.Services.Client;
 
-public class ClientService
+public class ClientService : IClientService
 {
     private readonly DateOnly _ageValidationDate = DateOnly.FromDateTime(DateTime.Now.AddYears(-18));
-    public Dictionary<Client, List<Account>> Clients { get; } = new();
+    public Dictionary<Models.BankModels.Client, List<Account>> Clients { get; } = new();
 
-    public void AddClient(Client client)
+    public void AddClient(Models.BankModels.Client client)
     {
         if (Clients.ContainsKey(client))
         {
@@ -28,7 +28,7 @@ public class ClientService
         }
     }
 
-    public void AddAccount(Client client, Account account)
+    public void AddAccount(Models.BankModels.Client client, Account account)
     {
         if (!Clients.TryGetValue(client, out var accounts))
         {
@@ -50,7 +50,7 @@ public class ClientService
         }
     }
 
-    public void UpdateAccount(Client client, Account account, Account newAccount)
+    public void UpdateAccount(Models.BankModels.Client client, Account account, Account newAccount)
     {
         if (!Clients.TryGetValue(client, out var value))
         {
@@ -68,7 +68,7 @@ public class ClientService
         }
     }
 
-    private void ValidateClient(Client client)
+    private void ValidateClient(Models.BankModels.Client client)
     {
         var validationErrorMessages = new List<string>();
         if (!client.HasPassportData)
@@ -94,4 +94,5 @@ public class ClientService
             throw new ArgumentException("Account cannot be zero or negative");
         }
     }
+
 }

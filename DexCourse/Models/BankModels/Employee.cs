@@ -4,7 +4,7 @@ public class Employee : Person
 {
     public string Position { get; private set; }
     public string? Contract { get; private set; }
-    public int Salary { get; private set; }
+    public int Salary { get; }
 
     public Employee(string name, DateOnly birthDate, string phoneNumber, string position, int salary, 
         bool hasPassportData)
